@@ -1,0 +1,269 @@
+  @card-width: 315px;
+  @card-height: 225px;
+  
+  .pbj-pokemon-roster-card-list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    max-width: 990px;
+    min-height: 480px;
+    background-color: #080101aa;
+    border-color: #ffffff55;
+    color: black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px 0px;
+    // -ms-transform: scale(0.5,0.5); /* IE 9 */
+    // -webkit-transform: scale(0.5,0.5); /* Safari */
+    // transform: scale(0.5,0.5); /* Standard syntax */
+  }
+    
+    .pbj-pokemon-roster-card {
+      width: 100px;
+    }
+
+  .pbj-pokemon-roster-card {
+      text-align: left;
+      background-color: #68A090;
+      border: 5px solid #EEE;
+      width: @card-width;
+      max-width: @card-width;
+      min-width: @card-width;
+      min-height: @card-height;
+      height: @card-height;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 10px 10px 0px;
+    }
+
+    .pbj-pokemon-roster-card:nth-child(3),
+    .pbj-pokemon-roster-card:last-child {
+      margin-right: 0;
+    }
+    
+    .pbj-pokemon-roster-card:nth-child(4),
+    .pbj-pokemon-roster-card:nth-child(5),
+    .pbj-pokemon-roster-card:last-child {
+      margin-bottom: 0;
+    }
+  
+    .pbj-pokemon-roster-card > div {
+      position:relative;
+      height: 100%;
+      width: 100%;
+    }
+  
+    .pbj-pokemon-roster-card .background,
+    .pbj-pokemon-roster-card .pokemon {
+      position:absolute;
+      height: 100%;
+      width: 100%;
+    }
+    .pbj-pokemon-roster-card img {
+      width: 100%;
+      -webkit-filter: drop-shadow(5px 5px 5px #222);
+      filter: drop-shadow(5px 5px 5px #222);
+    }
+    .pbj-pokemon-roster-card > * {
+      position:absolute;
+      top: 0px;
+    }
+    
+    .pbj-pokemon-roster-card .type-2 {
+      position:absolute;
+      background-color: red;
+      top: -50px;
+      left: 25px;
+      width: 200%;
+      height: 100%;
+      -moz-transform: rotate(127.875deg);
+      -webkit-transform: rotate(127.875deg);
+      -o-transform: rotate(127.875deg);
+      -ms-transform: rotate(127.875deg);
+      transform: rotate(127.875deg);
+    }
+    
+    .pbj-pokemon-roster-card .bg-shine {
+      position:absolute;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+50,ffffff+100&0+25,1+50,0+75 */
+      background: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 25%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 75%, rgba(255,255,255,0) 100%); /*       FF3.6-15 */
+      background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 25%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,0) 100%); /*  Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(127.875deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 25%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,0) 100%); /* W3C, IE10+,  FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+  
+    .pbj-pokemon-roster-card .bg-overlay {
+      position:absolute;
+      background-color: #FFF;
+      opacity: 0.50;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+    }
+  
+  
+  
+  
+  
+  
+  .pbj-pokemon-roster-card .foreground {
+    position: absolute;
+    width: @card-width;
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .pbj-pokemon-roster-card .foreground > div {
+    // width: 50%;
+    // padding: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  
+  .pbj-pokemon-roster-card .pokemon-box {
+    text-align: center;
+    flex-basis: 55%;
+  }
+  .pbj-pokemon-roster-card .pokemon-box > * {
+    margin-top: -10px;
+  }
+  .pbj-pokemon-roster-card .pokemon-box .name {
+    font-size: 20px;
+    text-transform: capitalize;
+  }
+  .pbj-pokemon-roster-card .types .type {
+    background-color: green;
+    border: 2px solid #FFF;
+    color: #FFF;
+    display: inline-block;
+    width: 75px;
+    border-radius: 20px;
+    padding: 2px;
+    text-transform: capitalize;
+  }
+  .pbj-pokemon-roster-card .skills {
+    flex-basis: 45%;
+    padding: 5px 0;
+  }
+
+  .pbj-pokemon-roster-card .move-list {
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  .pbj-pokemon-roster-card .skill {
+    background-color: #FFFFFF77;
+    border: 1px solid #AAAAAA77;
+    color: black;
+    position: relative;
+    height: 28px;
+    border-radius: 50px;
+    padding: 2px 7px;
+    margin-bottom: 2px;
+  }
+
+  .pbj-pokemon-roster-card .skill:first-child,
+  .pbj-pokemon-roster-card .skill:last-child {
+    // margin-left: -10px;
+  }
+  
+  .pbj-pokemon-roster-card .skill > .name,
+  .pbj-pokemon-roster-card .skill > .pp {
+    // font-weight: bold;
+    padding-bottom: 5px;
+  }
+  
+  .pbj-pokemon-roster-card .skill > .pp {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .pbj-pokemon-roster-card .skill > .description {
+    font-size: 12px;
+  }
+  
+  
+  .dropdown-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+  }
+
+  .dropdown-button > * {
+    // background-color: red;
+    // border-radius: 50px;
+    // // max-width: 20px;
+    // padding: 0 !important;
+  }
+  .dropdown-button .btn {
+    background-color: #ffffff55 !important;
+    border: 1px solid #AAAAAA77 !important;
+    color: #00000077 !important;
+    box-shadow: none !important;
+    border-radius: 50px;
+    padding: 0px;
+    height: 20px;
+    width: 20px;
+  }
+  .dropdown-button .btn:hover {
+    background-color: #ffffff99 !important;
+    color: black;
+  }
+  .dropdown-toggle::after {
+    margin-left: 0 !important;
+  }
+
+  .dropdown-button .caret {
+    display:none;
+  }
+
+  .open>.dropdown-menu {
+    border-radius: 10px;
+    // background-color: #ffffffee;
+  }
+  
+  
+  
+  
+    .pbj-pokemon-roster-card .types .type.normal { background-color: #68A090; }
+    .pbj-pokemon-roster-card .type-1 { background-color: #68A090; }
+    .pbj-pokemon-roster-card .type-2 { background-color: #68A090; }
+  
+    .pbj-pokemon-roster-card .types .type.normal, .pbj-pokemon-roster-card .type-1.normal, .pbj-pokemon-roster-card .type-2.normal { background-color: #A8A878; }
+    .pbj-pokemon-roster-card .types .type.fighting, .pbj-pokemon-roster-card .type-1.fighting, .pbj-pokemon-roster-card .type-2.fighting { background-color: #C03028; }
+    .pbj-pokemon-roster-card .types .type.flying, .pbj-pokemon-roster-card .type-1.flying, .pbj-pokemon-roster-card .type-2.flying { background-color: #A890F0; }
+    .pbj-pokemon-roster-card .types .type.poison, .pbj-pokemon-roster-card .type-1.poison, .pbj-pokemon-roster-card .type-2.poison { background-color: #A040A0; }
+    .pbj-pokemon-roster-card .types .type.ground, .pbj-pokemon-roster-card .type-1.ground, .pbj-pokemon-roster-card .type-2.ground { background-color: #E0C068; }
+    .pbj-pokemon-roster-card .types .type.rock, .pbj-pokemon-roster-card .type-1.rock, .pbj-pokemon-roster-card .type-2.rock { background-color: #B8A038; }
+    .pbj-pokemon-roster-card .types .type.bug, .pbj-pokemon-roster-card .type-1.bug, .pbj-pokemon-roster-card .type-2.bug { background-color: #A8B820; }
+    .pbj-pokemon-roster-card .types .type.ghost, .pbj-pokemon-roster-card .type-1.ghost, .pbj-pokemon-roster-card .type-2.ghost { background-color: #705898; }
+    .pbj-pokemon-roster-card .types .type.steel, .pbj-pokemon-roster-card .type-1.steel, .pbj-pokemon-roster-card .type-2.steel { background-color: #B8B8D0; }
+    
+    .pbj-pokemon-roster-card .types .type.fire, .pbj-pokemon-roster-card .type-1.fire, .pbj-pokemon-roster-card .type-2.fire { background-color: #F08030; }
+    .pbj-pokemon-roster-card .types .type.water, .pbj-pokemon-roster-card .type-1.water, .pbj-pokemon-roster-card .type-2.water { background-color: #6890F0; }
+    .pbj-pokemon-roster-card .types .type.grass, .pbj-pokemon-roster-card .type-1.grass, .pbj-pokemon-roster-card .type-2.grass { background-color: #78C850; }
+    .pbj-pokemon-roster-card .types .type.electric, .pbj-pokemon-roster-card .type-1.electric, .pbj-pokemon-roster-card .type-2.electric { background-color: #F8D030; }
+    .pbj-pokemon-roster-card .types .type.psychic, .pbj-pokemon-roster-card .type-1.psychic, .pbj-pokemon-roster-card .type-2.psychic { background-color: #F85888; }
+    .pbj-pokemon-roster-card .types .type.ice, .pbj-pokemon-roster-card .type-1.ice, .pbj-pokemon-roster-card .type-2.ice { background-color: #98D8D8; }
+    .pbj-pokemon-roster-card .types .type.dragon, .pbj-pokemon-roster-card .type-1.dragon, .pbj-pokemon-roster-card .type-2.dragon { background-color: #7038F8; }
+    .pbj-pokemon-roster-card .types .type.dark, .pbj-pokemon-roster-card .type-1.dark, .pbj-pokemon-roster-card .type-2.dark { background-color: #705848; }
+    .pbj-pokemon-roster-card .types .type.fairy, .pbj-pokemon-roster-card .type-1.fairy, .pbj-pokemon-roster-card .type-2.fairy { background-color: #EE99AC; }
+    
+    .pbj-pokemon-roster-card .types .type.shadow, .pbj-pokemon-roster-card .type-1.fairy, .pbj-pokemon-roster-card .type-2.shadow { background-color: #555555; }
+    .pbj-pokemon-roster-card .types .type.unknown, .pbj-pokemon-roster-card .type-1.unknown, .pbj-pokemon-roster-card .type-2.unknown { background-color: #68A090; }
+  
+  
+  
+  
+  
+ 
+  

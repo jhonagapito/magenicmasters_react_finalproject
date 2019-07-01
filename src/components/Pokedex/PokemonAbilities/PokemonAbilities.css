@@ -1,0 +1,35 @@
+
+.pokemon-abilities {
+    padding: 5%;
+    overflow: auto;
+    height: 50%;
+}
+
+.pokemon-abilities ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.pokemon-abilities li {
+    position: relative;
+    background-color: #00000022;
+    width: 100%;
+    margin-bottom: 1px;
+    border-radius: 0.4vw;
+    padding: 1vw 1vw;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 1.2vw;
+}
+
+.pokemon-abilities li:hover {
+    background-color: #00000055;
+}
+
+.hidden-ability-icon {
+    position: absolute;
+    color: #00000055;
+    top: 10%;
+    right: 1vw;
+    font-size: 2vw;
+}

@@ -1,0 +1,96 @@
+.menu-card-container {
+    position: fixed;
+    bottom: 15%;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  .app-logo {
+      display: inline-block;
+      height: 200px;
+      margin-bottom: 30px;
+  }
+  
+  .menu-card {
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    border: 5px solid #ccc;
+    display: inline-block;
+    border-radius: 20px;
+    width: 350px;
+    height:450px;
+    margin: 20px 40px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .menu-card img.pokedex {
+    position: absolute;
+    /* left: -328px; */
+    left: -415px;
+    height:100%;
+  }
+  .menu-card img.team-builder {
+    position: absolute;
+    /* left: -328px; */
+    left: -120px;
+    height:100%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+  .menu-card > * {
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+  .menu-card .info {
+    background-color: #000000CC;
+    color: white;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 87%;
+    bottom:0;
+    left: 0;
+    right: 0;
+  }
+  .menu-card .info > * {
+    display: inline-block;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+  .menu-card .name {
+    font-size: 40px;
+    width: 100%;
+  }
+  .menu-card .description {
+    opacity: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    width: 80%;
+    margin: 10px 10%;
+  }
+  
+  .menu-card .line {
+    background-color: white;
+    height: 4px;
+    width: 0%;
+  }
+  
+  .menu-card:hover {
+    border-color: red;
+  }
+  .menu-card:hover .info {
+    top: 0;
+    padding-top: 40%;
+  }
+  .menu-card:hover .line {
+    width: 90%;
+  }
+  .menu-card:hover .description {
+    opacity: 1;
+  }
+  

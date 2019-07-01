@@ -1,0 +1,78 @@
+
+
+@stat1 : 30px;
+@stat2 : 20px;
+@stat3 : 25px;
+@stat4 : 6px;
+@stat5 : 16px;
+@stat6 : 35px;
+
+@consize: 140px;
+@bcolor: lightgray;
+@fillColor: rgba(117,235,183,.8);;
+@degrees-stat1 : -30deg;
+@degrees-stat2 : 30deg;
+@degrees-stat3 : 90deg;
+@degrees-stat4 : 150deg;
+@degrees-stat5 : -150deg;
+@degrees-stat6 : -90deg;
+
+.stat-hex{
+  margin: 20px auto;
+  position: relative;
+  height: @consize;
+  width: @consize;
+  border: @bcolor 2px solid;
+  border-radius: 100%;
+  background-image:radial-gradient(circle at center, white 0px, white 6px, transparent 6px, transparent 14px, white 14px, white 26px, transparent 26px, transparent 34px, white 34px, white 46px, transparent 46px, transparent 54px, white 54px, white 64px, transparent 64px, transparent 74px), 
+radial-gradient(circle at center, transparent 10px, @bcolor 10px, @bcolor 11px, transparent 11px, transparent 30px, @bcolor 30px, @bcolor 31px, transparent 31px, transparent 50px, @bcolor 50px, @bcolor 51px, transparent 51px, transparent 70px, @bcolor 70px, @bcolor 71px, transparent 71px),
+linear-gradient(to right, transparent 50%, @bcolor 50%, transparent 51%),
+linear-gradient(30deg, transparent 50%, @bcolor 50%, transparent 51%), 
+linear-gradient(-30deg, transparent 50%, @bcolor 50%, transparent 51%);
+}
+
+.stat-hex > div {
+  border-style: solid;
+  border-color: transparent transparent @fillColor @fillColor;
+  transform-origin: left bottom;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transition: all .3s;
+  &:hover{
+    border-color: transparent transparent mix(@fillColor,gold,50%) mix(@fillColor,gold,50%);
+    filter: drop-shadow(0 0 5px rgba(0,0,0,.2));
+    z-index: 5;
+  }
+}
+
+.tri1{
+  border-width: @stat1 @stat2;
+  transform: matrix(cos(@degrees-stat1), sin(@degrees-stat1), -(cos(@degrees-stat1)+sqrt(3)*sin(@degrees-stat1))/2, (sqrt(3)*cos(@degrees-stat1)-sin(@degrees-stat1))/2, 0 ,0);
+}
+
+.tri2{
+  border-width: @stat2 @stat3;
+  transform: matrix(cos(@degrees-stat2), sin(@degrees-stat2), -(cos(@degrees-stat2)+sqrt(3)*sin(@degrees-stat2))/2, (sqrt(3)*cos(@degrees-stat2)-sin(@degrees-stat2))/2, 0 ,0);
+}
+
+.tri3{
+  border-width: @stat3 @stat4;
+  transform: matrix(cos(@degrees-stat3), sin(@degrees-stat3), -(cos(@degrees-stat3)+sqrt(3)*sin(@degrees-stat3))/2, (sqrt(3)*cos(@degrees-stat3)-sin(@degrees-stat3))/2, 0 ,0);
+}
+
+.tri4{
+  border-width: @stat4 @stat5;
+  transform: matrix(cos(@degrees-stat4), sin(@degrees-stat4), -(cos(@degrees-stat4)+sqrt(3)*sin(@degrees-stat4))/2, (sqrt(3)*cos(@degrees-stat4)-sin(@degrees-stat4))/2, 0 ,0);
+}
+
+.tri5{
+  border-width: @stat5 @stat6;
+  transform: matrix(cos(@degrees-stat5), sin(@degrees-stat5), -(cos(@degrees-stat5)+sqrt(3)*sin(@degrees-stat5))/2, (sqrt(3)*cos(@degrees-stat5)-sin(@degrees-stat5))/2, 0 ,0);
+}
+.tri6{
+  border-width: @stat6 @stat1;
+  transform: matrix(cos(@degrees-stat6), sin(@degrees-stat6), -(cos(@degrees-stat6)+sqrt(3)*sin(@degrees-stat6))/2, (sqrt(3)*cos(@degrees-stat6)-sin(@degrees-stat6))/2, 0 ,0);
+}
+
+

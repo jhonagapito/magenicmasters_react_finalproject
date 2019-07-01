@@ -1,0 +1,7 @@
+select {
+    border-radius: 20px;
+    padding: 0 5px;
+    text-transform: capitalize;
+    outline: none !important;
+    box-shadow: none !important;
+}

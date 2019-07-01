@@ -1,0 +1,10 @@
+
+.pokemon-basic-info {
+    padding: 5%;
+    overflow: auto;
+    height: 50%;
+}
+.basic-info-image img {
+    width: 100%;
+    /* margin-top: -7%; */
+}

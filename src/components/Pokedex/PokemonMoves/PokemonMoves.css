@@ -1,0 +1,26 @@
+
+.pokemon-moves {
+    padding: 5%;
+    overflow: auto;
+    height: 50%;
+}
+
+.pokemon-moves ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.pokemon-moves li {
+    width: 100%;
+    background-color: #00000022;
+    margin-bottom: 1px;
+    border-radius: 0.4vw;
+    padding: 0 1vw;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 1.2vw;
+}
+
+.pokemon-moves li:hover {
+    background-color: #00000055;
+}

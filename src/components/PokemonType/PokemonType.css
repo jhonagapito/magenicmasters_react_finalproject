@@ -1,0 +1,77 @@
+
+.type-box {
+  color: #ffffff;
+  border: 2px solid #00000055;
+  border-radius: 50px;
+  /* font-weight: 600; */
+  text-align: center;
+  text-transform: capitalize;
+  /* height: fit-content; */
+  width: 0;
+  min-width: 80px;
+  padding: 0px 5px;
+  margin: 2px;
+  /* NO SELECT */
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently */
+  
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .2s ease;
+}
+
+.types.solo .type-box {
+  min-width: 165px;
+}
+.types.solo .type-box:last-child {
+  display: none;
+}
+
+.type-box.is-clickable:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  /* -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222); */
+}
+
+.type-toggle-btn > input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.type-toggle-btn > input[type=checkbox] + label {
+  opacity: 0.25;
+}
+.type-toggle-btn > input[type=checkbox]:checked + label {
+  opacity: 1;
+}
+
+.type-box.normal { background-color: #A8A878; }
+.type-box.fighting { background-color: #C03028; }
+.type-box.flying { background-color: #A890F0; }
+.type-box.poison { background-color: #A040A0; }
+.type-box.ground { background-color: #E0C068; }
+.type-box.rock { background-color: #B8A038; }
+.type-box.bug { background-color: #A8B820; }
+.type-box.ghost { background-color: #705898; }
+.type-box.steel { background-color: #B8B8D0; }
+
+.type-box.fire { background-color: #F08030; }
+.type-box.water { background-color: #6890F0; }
+.type-box.grass { background-color: #78C850; }
+.type-box.electric { background-color: #F8D030; }
+.type-box.psychic { background-color: #F85888; }
+.type-box.ice { background-color: #98D8D8; }
+.type-box.dragon { background-color: #7038F8; }
+.type-box.dark { background-color: #705848; }
+.type-box.fairy { background-color: #EE99AC; }
+
+.type-box.shadow { background-color: #555555; }
+.type-box.unknown { background-color: #68A090; }

@@ -1,0 +1,320 @@
+@card-width: 175px;
+@card-height: 225px;
+
+.pbj-pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    // background-color: darkslategrey;
+    justify-content: center;
+    clear: left;
+    // -ms-transform: scale(0.5,0.5); /* IE 9 */
+    // -webkit-transform: scale(0.5,0.5); /* Safari */
+    // transform: scale(0.5,0.5); /* Standard syntax */
+  }
+  
+  .pbj-pokemon-list > div {
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+  }
+
+.pbj-pokemon-card {
+    text-align: left;
+    // background-color: red;
+    border: 5px solid #EEE;
+    width: @card-width;
+    min-width: @card-width;
+    min-height: 225px;
+    height: 225px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .pbj-pokemon-card > div {
+    position:relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .pbj-pokemon-card .background,
+  .pbj-pokemon-card .foreground {
+    position:absolute;
+    height: 100%;
+    width: 100%;
+  }
+  .pbj-pokemon-card > * {
+    position:absolute;
+    top: 0px;
+  }
+  
+  .pbj-pokemon-card .type-2 {
+    position:absolute;
+    // background-color: red;
+    top: 85px;
+    left: 0px;
+    width: 170%;
+    height: 70%;
+    -moz-transform: rotate(127.875deg);
+    -webkit-transform: rotate(127.875deg);
+    -o-transform: rotate(127.875deg);
+    -ms-transform: rotate(127.875deg);
+    transform: rotate(127.875deg);
+  }
+  
+  .pbj-pokemon-card .bg-shine {
+    position:absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+50,ffffff+100&0+25,1+50,0+75 */
+    background: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 25%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 75%, rgba(255,255,255,0) 100%); /*       FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 25%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,0) 100%); /*  Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(127.875deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 25%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 75%,rgba(255,255,255,0) 100%); /* W3C, IE10+,  FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+  
+  .pbj-pokemon-card .bg-overlay {
+    position:absolute;
+    background-color: #FFF;
+    opacity: 0.50;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .pbj-pokemon-card img {
+    width: 100%;  
+    -webkit-filter: drop-shadow(5px 5px 5px #222 );
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+  
+    .pbj-pokemon-card .title {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px;
+      margin-top: 0px;
+      margin-right: 10px;
+      border-radius: 0 50px 50px 0;
+      text-align: left;
+      font-size: 16px;
+    }
+  
+    .pbj-pokemon-card .title .number {
+      border-right: 1px solid #FFF;
+      padding-right: 5px;
+    }
+    .pbj-pokemon-card .title .name {
+      padding-left: 5px;
+      text-transform: capitalize;
+      display: inline-block;
+    }
+
+    .pbj-pokemon-card .type-1-name,
+    .pbj-pokemon-card .type-2-name {
+      color: black;
+      position:absolute;
+      font-size: 50px;
+      height: 0;
+      opacity: 0.10;
+      width: 100%;
+      font-weight: 100;
+      text-transform: uppercase;
+    }
+    
+    .pbj-pokemon-card .type-1-name {
+      top: 80px;
+      left: -27px;
+      -moz-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+    .pbj-pokemon-card .type-2-name {
+      bottom: 80px;
+      left: 27px;
+      -moz-transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+    }
+    
+  
+  .pbj-pokemon-card .type-1, .pbj-pokemon-card .type-2,
+  .pbj-pokemon-card .type-1.unknown, .pbj-pokemon-card .type-2.unknown {
+    background-color: #68A090;
+  }
+  .pbj-pokemon-card .type-1.normal, .pbj-pokemon-card .type-2.normal { background-color: #A8A878; }
+  .pbj-pokemon-card .type-1.fighting, .pbj-pokemon-card .type-2.fighting { background-color: #C03028; }
+  .pbj-pokemon-card .type-1.flying, .pbj-pokemon-card .type-2.flying { background-color: #A890F0; }
+  .pbj-pokemon-card .type-1.poison, .pbj-pokemon-card .type-2.poison { background-color: #A040A0; }
+  .pbj-pokemon-card .type-1.ground, .pbj-pokemon-card .type-2.ground { background-color: #E0C068; }
+  .pbj-pokemon-card .type-1.rock, .pbj-pokemon-card .type-2.rock { background-color: #B8A038; }
+  .pbj-pokemon-card .type-1.bug, .pbj-pokemon-card .type-2.bug { background-color: #A8B820; }
+  .pbj-pokemon-card .type-1.ghost, .pbj-pokemon-card .type-2.ghost { background-color: #705898; }
+  .pbj-pokemon-card .type-1.steel, .pbj-pokemon-card .type-2.steel { background-color: #B8B8D0; }
+  
+  .pbj-pokemon-card .type-1.fire, .pbj-pokemon-card .type-2.fire { background-color: #F08030; }
+  .pbj-pokemon-card .type-1.water, .pbj-pokemon-card .type-2.water { background-color: #6890F0; }
+  .pbj-pokemon-card .type-1.grass, .pbj-pokemon-card .type-2.grass { background-color: #78C850; }
+  .pbj-pokemon-card .type-1.electric, .pbj-pokemon-card .type-2.electric { background-color: #F8D030; }
+  .pbj-pokemon-card .type-1.psychic, .pbj-pokemon-card .type-2.psychic { background-color: #F85888; }
+  .pbj-pokemon-card .type-1.ice, .pbj-pokemon-card .type-2.ice { background-color: #98D8D8; }
+  .pbj-pokemon-card .type-1.dragon, .pbj-pokemon-card .type-2.dragon { background-color: #7038F8; }
+  .pbj-pokemon-card .type-1.dark, .pbj-pokemon-card .type-2.dark { background-color: #705848; }
+  .pbj-pokemon-card .type-1.fairy, .pbj-pokemon-card .type-2.fairy { background-color: #EE99AC; }
+
+  .pbj-pokemon-card .type-1.shadow, .pbj-pokemon-card .type-2.shadow { background-color: #555555; }
+
+
+
+
+
+
+
+  .pbj-pokemon-card:hover img {
+    animation: shake 150ms 2 linear;
+    -moz-animation: shake 150ms 2 linear;
+    -webkit-animation: shake 150ms 2 linear;
+    -o-animation: shake 150ms 2 linear;
+  }
+
+
+		/**
+		 **		Shake Annimation Starts Here.
+		 **/
+
+		@keyframes shake {
+		  0% {
+		    transform: translate(3px, 0);
+		  }
+		  50% {
+		    transform: translate(-3px, 0);
+		  }
+		  100% {
+		    transform: translate(0, 0);
+		  }
+		}
+
+		@-moz-keyframes shake {
+		  0% {
+		    -moz-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -moz-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -moz-transform: translate(0, 0);
+		  }
+		}
+
+		@-webkit-keyframes shake {
+		  0% {
+		    -webkit-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -webkit-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -webkit-transform: translate(0, 0);
+		  }
+		}
+
+		@-ms-keyframes shake {
+		  0% {
+		    -ms-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -ms-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -ms-transform: translate(0, 0);
+		  }
+		}
+
+		@-o-keyframes shake {
+		  0% {
+		    -o-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -o-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -o-transform: translate(0, 0);
+		  }
+		}
+
+		/**
+		 **		Shake Annimation Ends Here.
+		 **/
+
+
+     		/**
+		 **		Hop Annimation Starts Here.
+		 **/
+
+		@keyframes hop {
+		  0% {
+		    transform: translate(0, 3px);
+		  }
+		  50% {
+		    transform: translate(-0, 3px);
+		  }
+		  100% {
+		    transform: translate(0, 0);
+		  }
+		}
+
+		@-moz-keyframes hop {
+		  0% {
+		    -moz-transform: translate(0, 3px);
+		  }
+		  50% {
+		    -moz-transform: translate(-0, 3px);
+		  }
+		  100% {
+		    -moz-transform: translate(0, 0);
+		  }
+		}
+
+		@-webkit-keyframes hop {
+		  0% {
+		    -webkit-transform: translate(0, 3px);
+		  }
+		  50% {
+		    -webkit-transform: translate(-0, 3px);
+		  }
+		  100% {
+		    -webkit-transform: translate(0, 0);
+		  }
+		}
+
+		@-ms-keyframes hop {
+		  0% {
+		    -ms-transform: translate(0, 3px);
+		  }
+		  50% {
+		    -ms-transform: translate(-0, 3px);
+		  }
+		  100% {
+		    -ms-transform: translate(0, 0);
+		  }
+		}
+
+		@-o-keyframes hop {
+		  0% {
+		    -o-transform: translate(0, 3px);
+		  }
+		  50% {
+		    -o-transform: translate(-0, 3px);
+		  }
+		  100% {
+		    -o-transform: translate(0, 0);
+		  }
+		}
+
+		/**
+		 **		Shake Annimation Ends Here.
+		 **/
