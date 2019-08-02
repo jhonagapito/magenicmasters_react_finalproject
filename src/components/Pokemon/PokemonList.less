@@ -1,6 +1,44 @@
 @card-width: 175px;
 @card-height: 225px;
 
+.pageSizeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+#pageSize {
+  float: right;
+  padding: 10px;
+}
+.paginationContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pagination {
+  display: block;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination a.active {
+  background-color: #ee1515;
+  color: white;
+  border-radius: 10px;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd; border-radius: 10px;}
 .pbj-pokemon-list {
     display: flex;
     flex-wrap: wrap;

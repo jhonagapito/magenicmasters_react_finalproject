@@ -15,7 +15,7 @@ import Pokedex from './components/Pokedex/Pokedex';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getPokemonList, resetPokemonList} from './actions/indexActions';
+import { getPokemonList, getPokemonListPage, resetPokemonList, changePageNumber, changePageSize} from './actions/indexActions';
 import ReactPlayer from 'react-player';
 import BGM from "./assets/music/21 Pokémon Center.mp3";
 import {BGM_VOLUME} from "./constants/MEDIA_SETTINGS";
@@ -25,15 +25,20 @@ class App extends Component {
   constructor() {
     super();
     this.pokemonSelectHandler = this.pokemonSelectHandler.bind(this);
+    this.pageSizeSelectHandler = this.pageSizeSelectHandler.bind(this);
+    this.pageNumberSelectHandler = this.pageNumberSelectHandler.bind(this);
     this.resetList = this.resetList.bind(this);
     this.basePokemonList = [];
     this.state = {
       selectedPokemon: null,
-      basePokemonList: null
+      basePokemonList: null,
+      selectedPage: 1,
+      selectedPageSize: 10
     };
+    
   }
   componentWillMount() {
-    this.props.getPokemonList();
+    this.props.getPokemonListPage(this.state.selectedPage, this.state.selectedPageSize);
   }
 
   componentDidUpdate()
@@ -53,6 +58,25 @@ class App extends Component {
     this.setState({selectedPokemon: pokemon});
   }
 
+  pageSizeSelectHandler(size) {
+    this.setState({
+      selectedPage: 1, 
+      selectedPageSize: size
+    }, function() { 
+      this.props.getPokemonListPage(1, size); 
+    });
+    this.props.changePageSize(size);
+  }
+
+  pageNumberSelectHandler(number) {
+    this.setState({
+      selectedPage: number
+    }, function() { 
+      this.props.getPokemonListPage(number, this.state.selectedPageSize); 
+    });
+    //this.props.changePageNumber(number);
+  }
+
   resetList(){
     this.props.resetPokemonList(this.basePokemonList);
   }
@@ -62,12 +86,11 @@ class App extends Component {
       <div className="App">
         <div>
           <div className="pokemon-list-container">
-          
-          {/* <ModalRoute path='/pokedex/:id' parentPath='/'>
-              <PokemonDetails />
-          </ModalRoute> */}
-             <Search resetPokemonList={this.resetList} pokemonCount={!this.props.pokemonList ? 0 : this.props.pokemonList.length} />
-            <PokemonList pokemonList={this.props.pokemonList} pokemonSelectHandler={this.pokemonSelectHandler} />
+            <Search resetPokemonList={this.resetList} pokemonCount={!this.props.pokemonList ? 0 : this.props.pokemonList.length} />
+            <PokemonList pokemonList={this.props.pokemonList} 
+                        pokemonSelectHandler={this.pokemonSelectHandler} 
+                        pageSizeSelectHandler={this.pageSizeSelectHandler} 
+                        pageNumberSelectHandler={this.pageNumberSelectHandler} />
           </div>
         </div>
         <ReactPlayer url={BGM}
@@ -85,18 +108,23 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    pokemonList: state.pokemonList
+    pokemonList: state.pokemonList,
+    pokemonListPage: state.pokemonListPage,
+    pokemonListPageSize: state.pokemonListPageSize
   };
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ getPokemonList, resetPokemonList }, dispatch);
+  return bindActionCreators({ getPokemonList, resetPokemonList, getPokemonListPage, changePageSize, changePageNumber }, dispatch);
 }
 
 App.propTypes = {
   pokemonList: PropTypes.array,
   getPokemonList: PropTypes.func.isRequired,
-  resetPokemonList: PropTypes.func.isRequired
+  resetPokemonList: PropTypes.func.isRequired,
+  getPokemonListPage: PropTypes.func.isRequired,
+  changePageSize: PropTypes.func.isRequired,
+  changePageNumber: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
