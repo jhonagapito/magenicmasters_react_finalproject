@@ -42,11 +42,8 @@ class App extends Component {
     this.props.getPokemonListPage(this.state.selectedPage, this.state.selectedPageSize);
   }
 
-  componentDidUpdate()
-  { console.log('pokemon list updated');
-    console.log(this.props.pokemonList.length);
-    if(this.basePokemonList.length == 0)
-    {
+  componentDidUpdate() { 
+    if(this.basePokemonList.length == 0){
        this.basePokemonList = this.props.pokemonList;
     }
   }

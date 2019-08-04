@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 
 // Media
 import ReactPlayer from 'react-player';
-import { getPokemonDetails, getMyTeam, addToMyTeam, removeFromMyTeam, getPokemonCry } from '../../actions/indexActions';
+import { getPokemonDetails, getMyTeam, addToMyTeam, removeFromMyTeam, getPokemonCry, getTeamNames } from '../../actions/indexActions';
 import {CRY_VOLUME, VOICE_VOLUME} from "../../constants/MEDIA_SETTINGS";
 import PokemonCries from "../../data/PokemonCries";
 import TypeBackgrounds from "../../data/TypeBackgrounds";
@@ -44,7 +44,8 @@ class Pokedex extends Component {
             currentTabView: null,
             introRead: false,
             totalPokemonCount: 151,
-            enableRemove: false
+            enableRemove: false,
+            teamsList: ["Team 1","Team 2", "Team 3"]
         };
         this.onShutdownButtonClick = this.onShutdownButtonClick.bind(this);
         this.tabClickHandler = this.tabClickHandler.bind(this);
@@ -61,6 +62,8 @@ class Pokedex extends Component {
         this.getPokemon(pokemonId);
         this.handlerCaller(pokemonId);
         this.handleBackgroundBlurring();
+        //this.getTeamsList();
+        
     }
     componentDidUpdate() {
         if (!this.state.introRead) {
@@ -71,12 +74,23 @@ class Pokedex extends Component {
     
     handleTeamAddRemove(pokemon)
     {
-        if(!this.state.enableRemove)
+        if(this.state.enableRemove)
         {
-            this.addToTeamHandler(pokemon);
-        }else{
             this.removeFromTeamHandler(pokemon);
+        } else {
+            document.getElementById("myDropdown").classList.toggle("show_dropdown_item");
         }
+    }
+
+    getTeamsList() {
+        // let poke_teams = JSON.parse(localStorage.getItem('pokemon_teams') || '[]');
+        // this.setState({teamsList: poke_teams});
+        this.props.getTeamNames();
+    }
+
+    handleTeamAdd(pokemon, team) {
+        document.getElementById("myDropdown").classList.remove("show_dropdown_item");
+        this.addToTeamHandler(pokemon, team);
     }
 
     handleBackgroundBlurring() {
@@ -93,6 +107,7 @@ class Pokedex extends Component {
             this.props.getPokemonCry(pokemonId);
             // TODO: Need to optimize this by just retrieving the count
             this.props.getMyTeam();
+            this.props.getTeamNames();
             this.setState({pokemonId: pokemonId});
         }
         this.setAddRemoveButtonState(pokemonId);
@@ -194,9 +209,9 @@ class Pokedex extends Component {
             this.setState({introRead: true});
         }
     }
-    addToTeamHandler(pokemon) {
+    addToTeamHandler(pokemon, team) {
         window.responsiveVoice.speak(`${pokemon.name} joins the team`, null, {volume: VOICE_VOLUME, rate: 1.1});
-        this.props.addToMyTeam(this.props.pokemon);
+        this.props.addToMyTeam(this.props.pokemon, team);
         this.setState({enableRemove: true});
     }
     removeFromTeamHandler(pokemon) {
@@ -216,6 +231,9 @@ class Pokedex extends Component {
         }
         if(!this.props.pokemon){
             return <div>Still Loading</div>;
+        }
+        if(!this.props.teamNames) {
+            return  <div>Still Loading Team Names</div>;
         }
 
         let tabView = this.state.currentTabView ? this.getTabView(this.state.currentTab) : <PokemonBasicInfo pokemon={this.props.pokemon} />;
@@ -259,7 +277,18 @@ class Pokedex extends Component {
                         <div className="buttons">
                             <button className="btn btn-primary btn-shiny">View Shiny</button>
                             { this.checkAddRemoveButtonAvailability() &&
-                                <button className="btn btn-primary btn-party" onClick={() => this.handleTeamAddRemove(this.props.pokemon)}>{!this.state.enableRemove ? "Add to my" : "Remove from"} Team</button>
+                                <div className="dropdown_custom btn-party">
+                                     <button className="btn btn-primary btn-party" onClick={() => this.handleTeamAddRemove(this.props.pokemon)}>{!this.state.enableRemove ? "Add to my" : "Remove from"} Team</button>
+                                    <div id="myDropdown" className="dropdown-content">
+                                        { this.props.teamNames && this.props.teamNames.length == 0 && <a >No Avaialable Teams</a> }
+                                        { this.props.teamNames && this.props.teamNames.length > 0 &&
+                                            [...this.props.teamNames.map((e, i) => {
+                                                return <a key={i} onClick={() => this.handleTeamAdd(this.props.pokemon, e)}>{e}</a>;
+                                            })]
+                                        }
+                                    </div>
+                                </div>
+                                //<button className="btn btn-primary btn-party" onClick={() => this.handleTeamAddRemove(this.props.pokemon)}>{!this.state.enableRemove ? "Add to my" : "Remove from"} Team</button>
                             } 
                             <button className="btn btn-primary btn-power" onClick={this.onShutdownButtonClick}><FontAwesomeIcon icon="power-off" /></button>
                             <div className="dpad-area">
@@ -303,15 +332,17 @@ class Pokedex extends Component {
 
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
       pokemon: state.pokemon,
       pokemonCry: state.pokemonCry,
-      myTeam: state.myTeam
+      myTeam: state.myTeam,
+      teamNames: state.teamNames
     };
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({ getPokemonDetails, getPokemonCry, getMyTeam, addToMyTeam, removeFromMyTeam }, dispatch);
+    return bindActionCreators({ getPokemonDetails, getPokemonCry, getMyTeam, addToMyTeam, removeFromMyTeam, getTeamNames }, dispatch);
 }
 
 Pokedex.propTypes = {
@@ -323,8 +354,10 @@ Pokedex.propTypes = {
     removeFromMyTeam: PropTypes.func.isRequired,
     getMyTeam: PropTypes.func.isRequired,
     myTeam: PropTypes.array,
+    teamNames: PropTypes.array,
     routerProps: PropTypes.object,
-    isPokedexOpen: PropTypes.func
+    isPokedexOpen: PropTypes.func,
+    getTeamNames: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokedex);
