@@ -3,6 +3,7 @@ export const BASE = `https://pokeapi.co/api/v${VERSION}/`;
 // export const BASE_ALTERNATIVE = `http://pokeapi.salestock.net/api/v2/`;
 export const GENERATION_1 =  `${BASE}generation/1/`;
 export const POKEMON_SPECIES =  `${BASE}pokemon-species/`;
+export const GEN_1_POKEMON_SPECIES = `${POKEMON_SPECIES}?generation=1`;
 export const POKEMON_DETAILS =  `${BASE}pokemon/`;
 export const POKEMON_TYPES=  `${BASE}type/`;
 export const POKEMON_ABILITIES=  `${BASE}ability/`;

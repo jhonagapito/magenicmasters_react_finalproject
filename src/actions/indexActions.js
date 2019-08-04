@@ -3,7 +3,7 @@ import {
     SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY
 } from "./constants";
 import {
-    GENERATION_1, POKEMON_SPECIES, POKEMON_DETAILS, POKEMON_IMAGE_NORMAL, POKEMON_IMAGE_SPRITE,
+    GENERATION_1, GEN_1_POKEMON_SPECIES, POKEMON_SPECIES, POKEMON_DETAILS, POKEMON_IMAGE_NORMAL, POKEMON_IMAGE_SPRITE,
     POKEMON_TYPES, POKEMON_ABILITIES, POKEMON_MOVES, POKEMON_EVOLUTION_TRIGGER
 } from "../constants/API_URLS";
 import axios from 'axios';
@@ -79,13 +79,21 @@ export function getPokemonList() {
     };
 }
 
+export function getPokemonListPage(page, size) {
+    console.log(page, size);
+    let request = (size == 0) ? getPokemonListSubFunc() : getPaginatedPokemonList({ skip: ((page - 1) * size), take: size});
+    return {
+        type: GET_POKEMON_LIST,
+        payload: request
+    };
+}
+
 function getPokemonListSubFunc() {
     if (areAllPokemonLoaded) {
         return new Promise(() => {
             return pokemonStore;
         });
     }
-
     const request = axios.get(GENERATION_1)
         .then(res => {
             pokemonStore = [...res.data.pokemon_species];
@@ -93,19 +101,31 @@ function getPokemonListSubFunc() {
             pokemonStore.sort(idSortCompare);
             pokemonStore.forEach((pokemon, index) => getPokemonBasicInfo(pokemon, index));
 
-            // return Promise.all(pokemonStore.map(function(pokemon){
-            //     return getPokemonApiInfo(pokemon);
-            //   })).then(pokemonRes => {
-            //     pokemonStore[pokemonRes.index] = pokemonRes;
-            //     return pokemonRes;
-            //   });
             return Promise.all(pokemonStore.map(function (pokemon) {
                 return getPokemonApiInfo(pokemon);
             })).then(pokemonRes => {
                 pokemonStore[pokemonRes.index] = pokemonRes;
-
                 areAllPokemonLoaded = true;
+                return pokemonRes;
+            });
+        });
 
+    return request;
+}
+
+function getPaginatedPokemonList(pageSpec) {
+    const request = axios.get(GEN_1_POKEMON_SPECIES + `&limit=${pageSpec.take}&offset=${pageSpec.skip}`)
+        .then(res => {
+            pokemonStore = [...res.data.results];
+            pokemonStore.forEach((pokemon, index) => pokemon.id = getPokemonId(pokemon));
+            pokemonStore.sort(idSortCompare);
+            pokemonStore.forEach((pokemon, index) => getPokemonBasicInfo(pokemon, index));
+
+            return Promise.all(pokemonStore.map(function (pokemon) {
+                return getPokemonApiInfo(pokemon);
+            })).then(pokemonRes => {
+                pokemonStore[pokemonRes.index] = pokemonRes;
+                areAllPokemonLoaded = false;
                 return pokemonRes;
             });
         });

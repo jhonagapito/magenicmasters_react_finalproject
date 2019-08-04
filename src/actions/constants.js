@@ -11,3 +11,4 @@ export const ADD_TO_MYTEAM = "ADD_TO_MYTEAM";
 export const REMOVE_FROM_MYTEAM = "REMOVE_FROM_MYTEAM";
 export const GET_MYTEAM = "GET_MYTEAM";
 export const GET_CRY = "GET_CRY";
+export const GET_POKEMON_LIST_GEN1 = "GET_POKEMON_LIST_GEN1";
