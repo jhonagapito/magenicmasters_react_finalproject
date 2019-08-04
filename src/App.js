@@ -15,7 +15,7 @@ import Pokedex from './components/Pokedex/Pokedex';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getPokemonList, getPokemonListPage, resetPokemonList, changePageNumber, changePageSize} from './actions/indexActions';
+import { getPokemonList, getPokemonListPage, resetPokemonList} from './actions/indexActions';
 import ReactPlayer from 'react-player';
 import BGM from "./assets/music/21 Pokémon Center.mp3";
 import {BGM_VOLUME} from "./constants/MEDIA_SETTINGS";
@@ -33,7 +33,8 @@ class App extends Component {
       selectedPokemon: null,
       basePokemonList: null,
       selectedPage: 1,
-      selectedPageSize: 10
+      selectedPageSize: 10,
+      totalPokemons: 151
     };
     
   }
@@ -42,7 +43,8 @@ class App extends Component {
   }
 
   componentDidUpdate()
-  {
+  { console.log('pokemon list updated');
+    console.log(this.props.pokemonList.length);
     if(this.basePokemonList.length == 0)
     {
        this.basePokemonList = this.props.pokemonList;
@@ -65,7 +67,6 @@ class App extends Component {
     }, function() { 
       this.props.getPokemonListPage(1, size); 
     });
-    this.props.changePageSize(size);
   }
 
   pageNumberSelectHandler(number) {
@@ -74,7 +75,6 @@ class App extends Component {
     }, function() { 
       this.props.getPokemonListPage(number, this.state.selectedPageSize); 
     });
-    //this.props.changePageNumber(number);
   }
 
   resetList(){
@@ -87,7 +87,8 @@ class App extends Component {
         <div>
           <div className="pokemon-list-container">
             <Search resetPokemonList={this.resetList} pokemonCount={!this.props.pokemonList ? 0 : this.props.pokemonList.length} />
-            <PokemonList pokemonList={this.props.pokemonList} 
+            <PokemonList pokemonList={this.props.pokemonList}
+                        pokemonListTotal={151}
                         pokemonSelectHandler={this.pokemonSelectHandler} 
                         pageSizeSelectHandler={this.pageSizeSelectHandler} 
                         pageNumberSelectHandler={this.pageNumberSelectHandler} />
@@ -108,23 +109,19 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    pokemonList: state.pokemonList,
-    pokemonListPage: state.pokemonListPage,
-    pokemonListPageSize: state.pokemonListPageSize
+    pokemonList: state.pokemonList
   };
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ getPokemonList, resetPokemonList, getPokemonListPage, changePageSize, changePageNumber }, dispatch);
+  return bindActionCreators({ getPokemonList, resetPokemonList, getPokemonListPage}, dispatch);
 }
 
 App.propTypes = {
   pokemonList: PropTypes.array,
   getPokemonList: PropTypes.func.isRequired,
   resetPokemonList: PropTypes.func.isRequired,
-  getPokemonListPage: PropTypes.func.isRequired,
-  changePageSize: PropTypes.func.isRequired,
-  changePageNumber: PropTypes.func.isRequired
+  getPokemonListPage: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

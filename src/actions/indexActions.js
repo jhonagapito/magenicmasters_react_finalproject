@@ -1,6 +1,6 @@
 import {
     GET_POKEMON_LIST, GET_POKEMON, GET_POKEMON_FLAVOR_TEXT, BASIC_SEARCH, ADVANCED_SEARCH, GET_TYPES, RESET, GET_ABILITIES,
-    SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY, CHANGE_PAGE_SIZE, CHANGE_PAGE_NUMBER
+    SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY
 } from "./constants";
 import {
     GENERATION_1, GEN_1_POKEMON_SPECIES, POKEMON_SPECIES, POKEMON_DETAILS, POKEMON_IMAGE_NORMAL, POKEMON_IMAGE_SPRITE,
@@ -80,24 +80,11 @@ export function getPokemonList() {
 }
 
 export function getPokemonListPage(page, size) {
+    console.log(page, size);
     let request = (size == 0) ? getPokemonListSubFunc() : getPaginatedPokemonList({ skip: ((page - 1) * size), take: size});
     return {
         type: GET_POKEMON_LIST,
         payload: request
-    };
-}
-
-export function changePageSize(size) {
-    return {
-        type: CHANGE_PAGE_SIZE,
-        payload: size
-    };
-}
-
-export function changePageNumber(number) {
-    return {
-        type: CHANGE_PAGE_NUMBER,
-        payload: number
     };
 }
 
