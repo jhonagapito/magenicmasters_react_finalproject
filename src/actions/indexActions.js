@@ -1,6 +1,6 @@
 import {
     GET_POKEMON_LIST, GET_POKEMON, GET_POKEMON_FLAVOR_TEXT, BASIC_SEARCH, ADVANCED_SEARCH, GET_TYPES, RESET, GET_ABILITIES,
-    SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY
+    SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY, ADD_TEAM, SELECT_TEAM, GET_TEAM_NAMES
 } from "./constants";
 import {
     GENERATION_1, GEN_1_POKEMON_SPECIES, POKEMON_SPECIES, POKEMON_DETAILS, POKEMON_IMAGE_NORMAL, POKEMON_IMAGE_SPRITE,
@@ -28,6 +28,24 @@ export function advancedSearch(searchText, selectedAbility, selectedTypes) {
     };
 }
 
+export function addTeamName(teamName) {
+    return {
+        type: ADD_TEAM,
+        payload: teamName
+    };
+}
+
+export function selectTeam(teamName) {
+    return {
+        type: SELECT_TEAM,
+        payload: filterRosterFromStorage(teamName)
+    };
+}
+
+function filterRosterFromStorage(team) {
+    let poke_rosters = JSON.parse(localStorage.getItem('pokemon_rosters') || '[]');
+    return poke_rosters.filter((roster) => roster.teamName == team);
+}
 export function sort(sortOrder) {
     return {
         type: SORT_POKEMON,
@@ -80,7 +98,6 @@ export function getPokemonList() {
 }
 
 export function getPokemonListPage(page, size) {
-    console.log(page, size);
     let request = (size == 0) ? getPokemonListSubFunc() : getPaginatedPokemonList({ skip: ((page - 1) * size), take: size});
     return {
         type: GET_POKEMON_LIST,
@@ -177,28 +194,56 @@ export function getPokemonDetails(id) {
 // }
 
 export function getMyTeam() {
+    //let poke_rosters = JSON.parse(localStorage.getItem('pokemon_rosters') || '[]');
     return {
         type: GET_MYTEAM,
         payload: null
     };
 }
 
+export function getTeamNames() {
+    return {
+        type: GET_TEAM_NAMES,
+        payload: null
+    };
+}
+
 export function removeFromMyTeam(roster) {
+    removeRosterFromStorage(roster);
     return {
         type: REMOVE_FROM_MYTEAM,
         payload: roster
     };
 }
 
-export function addToMyTeam(pokemon) {
+function removeRosterFromStorage(removePokemon) {
+    console.log('removeRosterFromStorage');
+    console.log(removePokemon);
+    var poke_rosters = JSON.parse(localStorage.getItem('pokemon_rosters') || '[]');
+    console.log('BEFORE FILTER', poke_rosters);
+    if(poke_rosters.length > 0) {
+        poke_rosters = poke_rosters.filter((roster) => roster.pokemon.id != removePokemon.pokemon.id);
+        console.log('AFTER FILTER', poke_rosters);
+    }
+    localStorage.setItem('pokemon_rosters', JSON.stringify(poke_rosters));
+}
+
+export function addToMyTeam(pokemon, team) {
     let teamRoster = {
         pokemon: pokemon,
-        moves: [null, null, null, null]
+        moves: [null, null, null, null],
+        teamName: team
     };
+    addRosterToStorage(teamRoster);
     return {
         type: ADD_TO_MYTEAM,
         payload: teamRoster
     };
+}
+
+function addRosterToStorage(roster) {
+    let poke_rosters = JSON.parse(localStorage.getItem('pokemon_rosters') || '[]');
+    localStorage.setItem('pokemon_rosters', JSON.stringify([...poke_rosters, roster]));
 }
 
 export function getPokemonCry(pokemonId) {

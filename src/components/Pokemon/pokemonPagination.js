@@ -23,11 +23,11 @@ export default class PokemonPagination extends Component {
         this.props.pageNumberSelectHandler(Number(value));
     }
     clearAndSetActivePage(value) {
-        let allElements = Array.from(document.querySelectorAll('.pokemon_page.active'))
+        let allElements = Array.from(document.querySelectorAll('.pokemon_page.active'));
         for (let element of allElements) {
-            element.classList.remove('active')
+            element.classList.remove('active');
         }
-        var element = document.getElementById('pagination_'+ (value));
+        let element = document.getElementById('pagination_'+ (value));
         element.classList.add("active");
     }
 
@@ -40,7 +40,7 @@ export default class PokemonPagination extends Component {
                     <>
                     <a href="#">&laquo;</a>
                     {[...Array(Math.ceil(this.props.pokemonListTotal / this.props.selectedPageSize))].map((e, i) => {
-                        return <a id={`pagination_`+(i+1)} className="pokemon_page" key={i+1} onClick={() => this.selectPage(i+1)}>{i+1}</a>
+                        return <a id={`pagination_`+(i+1)} className={"pokemon_page " + ((this.state.selectedPage === (i+1)) ? 'active' : '')} key={i+1} onClick={() => this.selectPage(i+1)}>{i+1}</a>;
                     })}
                     <a href="#">&raquo;</a>
                     </>
