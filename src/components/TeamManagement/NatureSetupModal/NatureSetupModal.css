@@ -1,0 +1,108 @@
+.move-setup {
+    position: fixed !important;
+    margin-top: 0%;
+    margin-left: 0px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+    text-align: center;  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.move-setup-background {
+    position: absolute;
+    background-color: #00000055;
+    margin-top: 0px;
+    margin-left: 0px;
+    top: -100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
+    cursor: default;
+}
+
+
+.move-setup-contents {
+    position: relative;
+    background-color: #000000cc;
+    border: 5px solid #ffffff55;
+    border-radius: 30px;
+    display: inline-block;
+    z-index: 20;
+    min-width: 500px;
+    min-height: 350px;
+    max-width: 50%;
+    margin: 5%;
+    margin-top: 15%;
+    opacity: 1;
+    -webkit-animation: pokedex-fade 400ms linear;
+    animation: pokedex-fade 400ms linear;
+}
+
+.move-setup-dropdowns {
+    position: absolute;
+    width: 200px;
+    top: 100px;
+    right: 5px;
+}
+
+.move-setup-dropdowns option {
+    background-color: black;
+}
+
+.move-setup-dropdowns select.form-control {
+    border-radius: 50px 0 0 50px;
+    border-radius: 50px 0 0 50px;
+    background-color: transparent;
+    color: white;
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    border-color: #FFFFFF55;
+}
+
+.btn-close-selected-moves {
+    position: absolute;
+    border-radius: 50px !important;
+    height: 26px;
+    width: 26px;
+    padding: 3px 0px !important;
+    top: 10px;
+    right: 10px;
+}
+
+.btn-save-selected-moves {
+    position: absolute;
+    border-radius: 50px !important;
+    bottom: 10px;
+    width: 100px;
+    right: 10px;
+}
+
+select.form-control {
+    margin:5px;
+    border-radius: 50px 0 0 50px;
+}
+
+.move-setup-contents img {
+    position: absolute;
+    width: 300px;
+    bottom: 0px;
+    left: -10px;
+}
+
+.move-setup-title {
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    top: 0px;
+    left: 15px;
+}

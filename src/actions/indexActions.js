@@ -1,10 +1,10 @@
 import {
     GET_POKEMON_LIST, GET_POKEMON, GET_POKEMON_FLAVOR_TEXT, BASIC_SEARCH, ADVANCED_SEARCH, GET_TYPES, RESET, GET_ABILITIES,
-    SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY, ADD_TEAM, SELECT_TEAM, GET_TEAM_NAMES
+    SORT_POKEMON, ADD_TO_MYTEAM, GET_MYTEAM, REMOVE_FROM_MYTEAM, GET_CRY, ADD_TEAM, SELECT_TEAM, GET_TEAM_NAMES, GET_POKEMON_NATURES, GET_POKEMON_NATURE_INFO
 } from "./constants";
 import {
     GENERATION_1, GEN_1_POKEMON_SPECIES, POKEMON_SPECIES, POKEMON_DETAILS, POKEMON_IMAGE_NORMAL, POKEMON_IMAGE_SPRITE,
-    POKEMON_TYPES, POKEMON_ABILITIES, POKEMON_MOVES, POKEMON_EVOLUTION_TRIGGER
+    POKEMON_TYPES, POKEMON_ABILITIES, POKEMON_MOVES, POKEMON_EVOLUTION_TRIGGER, POKEMON_NATURES
 } from "../constants/API_URLS";
 import axios from 'axios';
 import PokemonCries from '../data/PokemonCries';
@@ -87,6 +87,26 @@ export function getAbilities() {
         type: GET_ABILITIES,
         payload: request
     };
+}
+
+export function getNatures() {
+    const url = `${POKEMON_NATURES}`;
+    const request = axios.get(url)
+        .then(res => {
+            return res.data.results;
+        });
+
+    return {
+        type: GET_POKEMON_NATURES,
+        payload: request
+    };
+}
+
+export function getNatureInfo(url) {
+    const request = axios.get(url)
+        .then(res => {
+
+        });
 }
 
 export function getPokemonList() {

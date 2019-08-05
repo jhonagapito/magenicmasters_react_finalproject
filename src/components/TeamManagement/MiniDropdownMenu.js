@@ -21,6 +21,7 @@ const MiniDropdownMenu = (props) => {
         {/* <MenuItem eventKey="1" href={`pokemon/${props.roster.pokemon.id}`}>View</MenuItem> */}
         <li><NavLink to={`myTeam/${props.roster.pokemon.id}`} className="dropdown-link"><FontAwesomeIcon icon="search" /> View</NavLink></li>
         <MenuItem eventKey="2" onClick={() => props.editMovesHandler(props.roster)}><FontAwesomeIcon icon="edit" /> Set Moves</MenuItem>
+        <MenuItem eventKey="4" onClick={() => props.editNatureHandler(props.roster)}><FontAwesomeIcon icon="grin-beam-sweat" /> Set Nature</MenuItem>
         <MenuItem divider />
         <MenuItem eventKey="3" onClick={() => props.removeHandler(props.roster)}><FontAwesomeIcon icon="heart-broken" /> Remove from my team</MenuItem>
       </DropdownButton>
@@ -31,7 +32,8 @@ const MiniDropdownMenu = (props) => {
 MiniDropdownMenu.propTypes = {
   roster: PropTypes.object,
   removeHandler: PropTypes.func,
-  editMovesHandler: PropTypes.func
+  editMovesHandler: PropTypes.func,
+  editNatureHandler: PropTypes.func
 };
 
 export default MiniDropdownMenu;

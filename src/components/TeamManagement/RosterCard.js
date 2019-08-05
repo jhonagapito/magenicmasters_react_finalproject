@@ -19,6 +19,7 @@ class RosterCard extends Component {
                     roster={this.props.roster}
                     removeHandler={this.props.removeHandler}
                     editMovesHandler={this.props.showModalHandler}
+                    editNatureHandler={this.props.showNatureModalHandler}
                     />
                     <img src={this.props.roster.pokemon.imgUrl} alt={this.props.roster.pokemon.name} />
                     {/* <span className="number">#{this.props.roster.pokemon.displayId}</span> */}
@@ -62,7 +63,8 @@ class RosterCard extends Component {
 RosterCard.propTypes = {
     roster: PropTypes.object,
     removeHandler: PropTypes.func,
-    showModalHandler: PropTypes.func
+    showModalHandler: PropTypes.func,
+    showNatureModalHandler: PropTypes.func
  };
 
 export default RosterCard;

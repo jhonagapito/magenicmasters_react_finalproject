@@ -11,4 +11,5 @@ export const POKEMON_MOVES=  `${BASE}move/`;
 export const POKEMON_EVOLUTION_TRIGGER = `${BASE}evolution-trigger/`;
 export const POKEMON_IMAGE_NORMAL = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/';
 export const POKEMON_IMAGE_SPRITE = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
+export const POKEMON_NATURES = `${BASE}nature/?limit=25`;
 

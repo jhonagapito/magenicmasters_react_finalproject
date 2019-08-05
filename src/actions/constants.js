@@ -14,3 +14,5 @@ export const GET_CRY = "GET_CRY";
 export const ADD_TEAM = "ADD_TEAM";
 export const SELECT_TEAM = "SELECT_TEAM";
 export const GET_TEAM_NAMES = "GET_TEAM_NAMES";
+export const GET_POKEMON_NATURES = "GET_POKEMON_NATURES";
+export const GET_POKEMON_NATURE_INFO = "GET_POKEMON_NATURE_INFO";
